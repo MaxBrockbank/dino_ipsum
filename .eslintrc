@@ -12,6 +12,6 @@
   },
   "rules": {
     "semi": 1,
-    "indent":["warn", "tab"]
+    "indent":["warn", 2]
   }
 }
