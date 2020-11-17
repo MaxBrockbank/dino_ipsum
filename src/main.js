@@ -5,6 +5,10 @@ import './../src/css/styles.css';
 import DinoIpsum from './js/dinoApiCall.js';
 
 $(document).ready(() => {
-  const result = DinoIpsum.getMyDino();
-  console.log(result);
+  const mysteryDinosaur = DinoIpsum.getMyDino();
+  $('#mystery').append
+  $('#letter-guess').click(function() {
+    let letter = $('#letter').val();
+
+  })
 });
