@@ -9,23 +9,24 @@ $(document).ready(() => {
   const mysteryDinosaur = DinoIpsum.getMyDino();
   function youLose(guesses) {
     if (guesses === 0) {
-      alert('YOU LOSE, YOU GET NOTHING')
+      alert('YOU LOSE, YOU GET NOTHING');
     }
   }
   mysteryDinosaur.then(function(response){
     let body = JSON.parse(response);
     let game = new DinoGame(body[0][0]);
     let dashes = game.setUp();
+    $('#mystery-dino').text(dashes);
     $('#guesses-left').text(game.guesses);
-    $('#letter-guess').click(function() {
-      let letter = $('#letter').val();
-      game.checkAnswer(guess, dashes); 
-      youLose(game.guesses);     
-    })
+    $('#game-board').submit(function(event) {
+      let letter = $('#letter-guess').val();
+      $('#letter-guess').val('');
+      game.checkAnswer(letter, dashes);
+      $('#guesses-left').text(game.guesses) 
+      youLose(game.guesses);
+      event.preventDefault();     
+    });
   }, function(error){
     console.log(`You suck: ${error}`);
   });
-    console.log(body);
-  
-  console.log(game);
 });

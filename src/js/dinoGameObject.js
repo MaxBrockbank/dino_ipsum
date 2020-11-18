@@ -9,24 +9,25 @@ export default class DinoGame {
     let emptyAnswerArray = [];
     for(let i=0; i<this.dinosaur.length; i++) {
       emptyAnswerArray.push('-');
-    };
+    }
     let displayEmptyAnswerArray = emptyAnswerArray.join(''); // --------------
     console.log(displayEmptyAnswerArray.length);
     console.log(this.dinosaur.length);
+    console.log(this.dinosaur);
     return displayEmptyAnswerArray;
   }
 
   checkAnswer(guess, displayedLetters) {
-    for(let i=0; i<this.dinosaur.length; i++) {
-      if (this.dinosaur[i] == guess ) {
+    if (this.dinosaur.includes(guess)) {
+      for(let i=0; i<this.dinosaur.length; i++) {
         displayedLetters = displayedLetters[i].replace('-', guess);
-      } else {
-        this.previousGuesses.push(guess);
-        this.guesses--;
-      }
+      };
+    } else {
+      this.previousGuesses.push(guess);
+      this.guesses -= 1;
     }
   }
   
 
 
-};
+}
